@@ -1,131 +1,137 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# `Moment`
+The application is available for viewing [here]().
 
-Welcome USER_NAME,
+![Moment Responsive Image]()
+## Introduction
+## Business/Social Goals
+## UX Goals
+## User Stories
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+| Id | User Story | Label | User Story Testing |
+| ----- | ----- | ----- | ----- |
+## Wireframes
+![Moment Wireframe]()
+## Strategy
+## Target Audience
+## Key Information Deliverables
+## Features
+## Structure 
+## Models
+Below is a simple ERD for `moment`'s models.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+![Moment ERD]()
+## Views & Templates
+## Scope of Application
+## Aesthetics
+## Technologies
+1. HTML5/ Django Templates - Used for structuring and content.
+2. CSS3 - Used for adding styles to the content for legibility and aesthetic appeal.
+3. Vanilla Javascript - For adding basic interactivity and dynamically setting URLs.
+4. FontAwesome/Bootstrap icons - used for icons.
+4. FontAwesome/Bootstrap icons - used for icons.
+5. Emojipedia - used for emojis.
+6. Firefox Developer Tools - used for debugging the website during production.
+7. Lighthouse - An extension I used for testing the performance, accessibility, best practices and SEO of my site (result shown under debugging below).
+8. GitHub - For code storage, version control and deployment.
+9. Git - For commiting through the terminal and pushing to GitHub for storage.
+8. GitHub - For code storage, version control and deployment.
+9. Git - For commiting through the terminal and pushing to GitHub for storage.
+10. VSC - The IDE I developed the project in.
+11. Balsamiq - For a clear understanding of the structure I wanted my application to follow. The project has since deviated slightly from the design for improved user experience.
+12. Color Contrast Accessibility Validator - check legibility of my text on different backgrounds for better accessibility.
+13. W3C Markup Validation Service - to validate my HTML for potential errors.
+14. W3C CSS Validation Service - to validate my CSS code for potential errors.
+15. JSHint - for checking and validating my JS code. 
+16. Pep8 - for Python code validation and best practices formatting.
+17. Freeformatter CSS Beautify - to ensure I formatted my CSS correctly.
+18. Beautifier.io - to beautify my JS. 
+19. BeFunky Collage Maker - to create the responsive image.
 
-## Gitpod Reminders
+## Testing & Debugging
+This section outlines procedures for manual testing. For automated testing, please see all files `test*.py`.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+- ## Manual Testing
+| Feature | Expected Outcome | Testing Procedure | Result | Remark |
+|---|---|---|---|---|
 
-`python3 -m http.server`
+- ## Automated Testing
+## Accessibility & Performance
+### Lighthouse
+### Colour Accessibility Validator
+### HTML Validation
+### CSS Validation
+### JSHint Validation
+# Deployment
+The application is deployed on Heroku through Git Hub and is available for viewing in the link at the top of this README.md document. To deploy a Heroku project, please refer to the guide below.
 
-A blue button should appear to click: _Make Public_,
+## Foreword
+There are some general requirements when it comes to setting up your application and its files: 
+- Your dependencies must be placed in the requirements.txt file.
+- You must strictly adhere to the correct folder structure expected by Django's settings.
+- In Django's settings.py file, setting Debug = True in development will display a detailed errors page if the application comes across an error hindering template rendering. It will also allow the collection of static files (stylesheets, images, and javascript files automatically). Setting Debug = False will display standard error pages under the same conditions and will not update any changes to static files.
 
-Another blue button should appear to click: _Open Browser_.
+In Heroku, this is configured under `Config Vars`, as `COLLECT_STATIC`, with the value of either:
+  - `0` for blocking automatic collection
+  - `1` for enabling automatic collection.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+_Note: Do not commit to GitHub with Debug = True. Always set Debug = False before committing to avoid exposing personal details._
 
-A blue button should appear to click: _Make Public_,
+You will need two-factor verification set up to enable log in.
 
-Another blue button should appear to click: _Open Browser_.
+### Step 1: Create an App on Heroku
+Log onto your Heroku dashboard using your username and password, and confirm the access code in the two-factor verification app of your choosing.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+Create a new Heroku app:
+![New Heroku App]()
 
-To log into the Heroku toolbelt CLI:
+You will be asked to pick a name and region for your app before clicking `Create app` on the next page.
+![New App Options]()
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Step 2: Connect to GitHub
+Once you've created your app, go to the `Deploy` tab at the top.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+Select the middle box with GitHub's logo to connect your Heroku app to a GitHub Repository.
 
-### Connecting your Mongo database
+If prompted, authorize Heroku to access your GitHub account.
+At the bottom, enter the name of the repository you wish to deploy to, and click Connect.
+![Connect GitHub to Heroku]()
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+### Step 3: Automatic Deploy (Optional)
+Under `Automatic Deploys`, choose a branch from your GitHub repository that Heroku will watch for changes.
 
-------
+Enable automatic deploys by clicking `Enable Automatic Deploys`. With this, every push to the selected branch will automatically deploy a new version of your app.
 
-## Release History
+### Step 4: Settings
+When you create the app, you will need to add the `heroku/python` buildpack in the Settings tab. 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### Step 5: Deploy Your Masterpiece
+If you've enabled automatic deploys, any push to the selected branch will automatically deploy your application.
 
-**June 18, 2024,** Add Mongo back into template
+If you prefer to deploy manually or want to deploy a branch without enabling automatic deploys, go to `Manual deploy`, select the branch, and click `Deploy Branch`.
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+### Step 6: Where is my Application?
+Your application will have a similar look to the following Heroku URL configuration: (https://*.herokuapp.com) and can be found after clicking the `Open App` button on your dashboard in the top right corner.
 
-**May 28 2024:** Fix Mongo and Links installs
+![Open App]()
 
-**April 26 2024:** Update node version to 16
+## Forking a GitHub Repository
+To make changes to your repository without changing its original state, you can make a copy of it via `fork`. This ensures the original repository remains unchanged. 
 
-**September 20 2023:** Update Python version to 3.9.17.
+Steps:
+1. Click into the GitHub repository you want to fork.
+2. Click `Fork` in the top right-hand side of the top bar, and this should take you to a page titled `Create a new fork`.
+3. You can now work in this copy of your repository without making changes to the original.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+## Cloning a GitHub Repository
+Cloning a repository essentially means downloading a copy of your repository that can be worked on locally. This method allows for version control and backup of code.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+Steps:
+1. Click on the GitHub repository you want to clone.
+2. Click on the `Code` button.
+3. Copy the link in the dropdown.
+4. Open a terminal within your VSC (or whatever IDE you choose to use).
+5. In the terminal type 'git clone' and paste the URL.
+6. Press Enter - you now have a cloned version of your GitHub repository.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+# Credits
+# Acknowledgements
