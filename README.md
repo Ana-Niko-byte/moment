@@ -3,12 +3,83 @@ The application is available for viewing [here]().
 
 ![Moment Responsive Image]()
 ## Introduction
+
+## Table of Contents
+- Business/Social Goals
+- UX Goals
+- User Stories
+- Wireframes
+- Strategy
+- Target Audience
+- Key Information Deliverables
+- Features
+- Structure
+- Models
+- Views & Templates
+- Scope of Application
+- Aesthetics
+- Technologies
+- Testing & Debugging
+  - Manual Testing
+  - Automated Testing
+- Accessibility & Performance
+  - Lighthouse
+  - Colour Accessibility Validator
+  - HTML Validation
+  - CSS Validation
+  - JSHint Validation
+- Deployment
+  - Foreword
+  - Step 1: Create an App on Heroku
+  - Step 2: Connect to GitHub
+  - Step 3: Automatic Deploy (Optional)
+  - Step 4: Settings
+  - Step 5: Deploy Your Masterpiece
+  - Step 6: Where is my Application?
+- Forking a GitHub Repository
+- Cloning a GitHub Repository
+- Credits
+- Acknowledgements
+
 ## Business/Social Goals
+- As a first time visitor, I would like to view the 'moment' home page so that I have quick access to all relevant information to get started.
+- As a site user, I would like access to a custom profile with my personal information and a list of charities I am a part of so that I may view and amend as needed.
+- As a site user, I would like the option to read more information on the charity prior to donating.
+- As a site user, it would be nice to have a contact page so that I could contact the 'Moment' team with queries.
+- As a site user, I require a donations page from which I can make a secure transaction to the charity of my choosing.
+- As a donatee, I require access to the Charity Canvas to collaborate with other artists.
+- As a donatee, I would like access to a chat room with other people who have donated to the charity for networking and collaboration.
+- As a donatee, I would like the option of viewing my past donations.
+- As a donatee, I would like the option of amending my donations prior to charging my card.
+- As a donatee, I would like the option of deleting items in my basket.
+- As a donatee, I require a secure payment system to make donations to selected charities.
+- As a (potential) donatee, I require the option of signing-up, signing-in and signing-out of my account.
+- As a site visitor, I would like the option of signing up for the Moment Newsletter, without needing to register for an account.
+- As a site user/donatee, I would like access to Moment's social media so that I could follow the page and stay up to date.
+
 ## UX Goals
+- As a site user/donatee, I require all pages to be displayed based on the condition of my authentication, to avoid confusion and site errors, so I should be redirected to the relevant page without coming across site errors and unexpected renderings. 
+- As a site user/donatee, I would like all pages to follow the same branding guidelines - this includes font family, colours (colour palette), image styles, spacing, and effects. Colours should convey the correct emotions, so as to ensure the intended branding message and motives.
+- As a site user/donatee, I would like all pages to be responsive to ensure I have a good user experience. This includes best practices in legibility, colour contrast, font sizes, branding, and element visibility.
+
 ## User Stories
 
 | Id | User Story | Label | User Story Testing |
-| ----- | ----- | ----- | ----- |
+| ----- | As a first time visitor, I would like to view the 'moment' home page so that I have quick access to all relevant information to get started. | ----- | ----- |
+| ----- | As a site user, I would like access to a custom profile with my personal information and a list of charities I am a part of so that I may view and amend as needed. | ----- | ----- |
+| ----- | As a site user, I would like the option to read more information on the charity prior to donating. | ----- | ----- |
+| ----- | As a site user, it would be nice to have a contact page so that I could contact the 'Moment' team with queries. | ----- | ----- |
+| ----- | As a site user, I require a donations page from which I can make a secure transaction to the charity of my choosing. | ----- | ----- |
+| ----- | As a donatee, I require access to the Charity Canvas to collaborate with other artists. | ----- | ----- |
+| ----- | As a donatee, I would like access to a chat room with other people who have donated to the charity for networking and collaboration. | ----- | ----- |
+| ----- | As a donatee, I would like the option of viewing my past donations. | ----- | ----- |
+| ----- | As a donatee, I would like the option of amending my donations prior to charging my card. | ----- | ----- |
+| ----- | As a donatee, I would like the option of deleting items in my basket. | ----- | ----- |
+| ----- | As a donatee, I require a secure payment system to make donations to selected charities. | ----- | ----- |
+| ----- | As a (potential) donatee, I require the option of signing-up, signing-in and signing-out of my account. | ----- | ----- |
+| ----- | As a site visitor, I would like the option of signing up for the Moment Newsletter, without needing to register for an account. | ----- | ----- |
+| ----- | As a site user/donatee, I would like access to Moment's social media so that I could follow the page and stay up to date. | ----- | ----- |
+
 ## Wireframes
 ![Moment Wireframe]()
 ## Strategy
@@ -61,10 +132,10 @@ This section outlines procedures for manual testing. For automated testing, plea
 ### HTML Validation
 ### CSS Validation
 ### JSHint Validation
-# Deployment
+## Deployment
 The application is deployed on Heroku through Git Hub and is available for viewing in the link at the top of this README.md document. To deploy a Heroku project, please refer to the guide below.
 
-## Foreword
+### Foreword
 There are some general requirements when it comes to setting up your application and its files: 
 - Your dependencies must be placed in the requirements.txt file.
 - You must strictly adhere to the correct folder structure expected by Django's settings.
