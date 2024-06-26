@@ -31,8 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "8000-ananikobyte-moment-i2ywm59il8l.ws-us114.gitpod.io",
+    ".herokuapp.com",
 ]
-
 
 # Application definition
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'charity',
 ]
 
 MIDDLEWARE = [
