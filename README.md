@@ -1,5 +1,5 @@
 # `Moment`
-The application is available for viewing [here]().
+The application is available for viewing [here](https://moment-canvas-68ed5e5eed98.herokuapp.com/).
 
 ![Moment Responsive Image]()
 ## Introduction
@@ -65,20 +65,21 @@ The application is available for viewing [here]().
 ## User Stories
 
 | Id | User Story | Label | User Story Testing |
-| ----- | As a first time visitor, I would like to view the 'moment' home page so that I have quick access to all relevant information to get started. | ----- | ----- |
-| ----- | As a site user, I would like access to a custom profile with my personal information and a list of charities I am a part of so that I may view and amend as needed. | ----- | ----- |
-| ----- | As a site user, I would like the option to read more information on the charity prior to donating. | ----- | ----- |
-| ----- | As a site user, it would be nice to have a contact page so that I could contact the 'Moment' team with queries. | ----- | ----- |
-| ----- | As a site user, I require a donations page from which I can make a secure transaction to the charity of my choosing. | ----- | ----- |
-| ----- | As a donatee, I require access to the Charity Canvas to collaborate with other artists. | ----- | ----- |
-| ----- | As a donatee, I would like access to a chat room with other people who have donated to the charity for networking and collaboration. | ----- | ----- |
-| ----- | As a donatee, I would like the option of viewing my past donations. | ----- | ----- |
-| ----- | As a donatee, I would like the option of amending my donations prior to charging my card. | ----- | ----- |
-| ----- | As a donatee, I would like the option of deleting items in my basket. | ----- | ----- |
-| ----- | As a donatee, I require a secure payment system to make donations to selected charities. | ----- | ----- |
-| ----- | As a (potential) donatee, I require the option of signing-up, signing-in and signing-out of my account. | ----- | ----- |
-| ----- | As a site visitor, I would like the option of signing up for the Moment Newsletter, without needing to register for an account. | ----- | ----- |
-| ----- | As a site user/donatee, I would like access to Moment's social media so that I could follow the page and stay up to date. | ----- | ----- |
+| ----- | ----- | ----- | ----- |
+| 3 | As a first time visitor, I would like to view the 'moment' home page so that I have quick access to all relevant information to get started. | `must-have` | ----- |
+| 2 | As a site user, I would like access to a custom profile with my personal information and a list of charities I am a part of so that I may view and amend as needed. | `should-have` | ----- |
+| 4 | As a site user, I would like the option to read more information on the charity prior to donating. | `must-have` | ----- |
+| 6 | As a site user, it would be nice to have a contact page so that I could contact the 'Moment' team with queries. | `good-to-have` | ----- |
+| 28 | As a site user, I require a donations page from which I can make a secure transaction to the charity of my choosing. | `must-have` | ----- |
+| 5 | As a donatee, I require access to the Charity Canvas to collaborate with other artists. | `must-have` | ----- |
+| 7 | As a donatee, I would like access to a chat room with other people who have donated to the charity for networking and collaboration. | `should-have` | ----- |
+| 19 | As a donatee, I would like the option of viewing my past donations. | `should-have` | ----- |
+| 20 | As a donatee, I would like the option of amending my donations prior to charging my card. | `must-have` | ----- |
+| 21 | As a donatee, I would like the option of deleting items in my basket. | `must-have` | ----- |
+| 22/23 | As a donatee, I require a secure payment system to make donations to selected charities. | `must-have` | ----- |
+| 8/9 | As a (potential) donatee, I require the option of signing-up, signing-in and signing-out of my account. | `must-have` | ----- |
+| 10 | As a site visitor, I would like the option of signing up for the Moment Newsletter, without needing to register for an account. | `must-have` | ----- |
+| 24 | As a site user/donatee, I would like access to Moment's social media so that I could follow the page and stay up to date. | `good-to-have` | ----- |
 
 ## Wireframes
 ![Moment Wireframe]()
@@ -99,12 +100,9 @@ Below is a simple ERD for `moment`'s models.
 2. CSS3 - Used for adding styles to the content for legibility and aesthetic appeal.
 3. Vanilla Javascript - For adding basic interactivity and dynamically setting URLs.
 4. FontAwesome/Bootstrap icons - used for icons.
-4. FontAwesome/Bootstrap icons - used for icons.
 5. Emojipedia - used for emojis.
 6. Firefox Developer Tools - used for debugging the website during production.
 7. Lighthouse - An extension I used for testing the performance, accessibility, best practices and SEO of my site (result shown under debugging below).
-8. GitHub - For code storage, version control and deployment.
-9. Git - For commiting through the terminal and pushing to GitHub for storage.
 8. GitHub - For code storage, version control and deployment.
 9. Git - For commiting through the terminal and pushing to GitHub for storage.
 10. VSC - The IDE I developed the project in.
@@ -114,9 +112,6 @@ Below is a simple ERD for `moment`'s models.
 14. W3C CSS Validation Service - to validate my CSS code for potential errors.
 15. JSHint - for checking and validating my JS code. 
 16. Pep8 - for Python code validation and best practices formatting.
-17. Freeformatter CSS Beautify - to ensure I formatted my CSS correctly.
-18. Beautifier.io - to beautify my JS. 
-19. BeFunky Collage Maker - to create the responsive image.
 
 ## Testing & Debugging
 This section outlines procedures for manual testing. For automated testing, please see all files `test*.py`.
@@ -204,5 +199,5 @@ Steps:
 5. In the terminal type 'git clone' and paste the URL.
 6. Press Enter - you now have a cloned version of your GitHub repository.
 
-# Credits
-# Acknowledgements
+## Credits
+## Acknowledgements
