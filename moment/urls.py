@@ -19,6 +19,7 @@ from django.urls import path, include
 from charity.views import charity
 
 urlpatterns = [
+    path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
-    path('', include("charity.urls")),
+    path('', include('charity.urls')),
 ]
