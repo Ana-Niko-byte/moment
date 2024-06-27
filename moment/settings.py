@@ -30,8 +30,15 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "8000-ananikobyte-moment-2wljxca7v9u.ws-us114.gitpod.io",
+    "8000-ananikobyte-moment-ttl4y55vll3.ws-us114.gitpod.io",
     ".herokuapp.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "https://*.herokuapp.com",
+    "https://*.gitpod.io",
+    "https://*.ws.codeinstitute-ide.net",
 ]
 
 # Application definition
@@ -51,7 +58,7 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/success'
 LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
@@ -67,10 +74,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'moment.urls'
 
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
