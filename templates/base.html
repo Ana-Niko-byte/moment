@@ -22,7 +22,7 @@
         {% block extra_css %}
         {% endblock %}
 
-        <link rel="icon" type="image/x-icon" href="">
+        <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
         <title>Moment Charity {% block extra_title %}{% endblock %}</title>
     </head>
 
@@ -47,25 +47,24 @@
                 </ul>
             </nav>
 
-        <!-- Django Messages -->
-        {% if messages %}
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-9 col-sm-12 mb-4">
-                    {% for message in messages %}
-                    <div class="alert {{ message.tags }} alert-dismissible
-                    fade show text-center" id="msg" role="alert">
-                    {{ message | safe }}
-                    <button type="button" class="btn-close"
-                        data-bs-dismiss="alert" aria-label="Close"></button>
+            <!-- Django Messages -->
+            {% if messages %}
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-9 col-sm-12 mb-4">
+                        {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible
+                        fade show text-center" id="msg" role="alert">
+                        {{ message | safe }}
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
-        </div>
-        {% endif %}
-        <!-- /Django Messages -->
-
+            {% endif %}
+            <!-- /Django Messages -->
         </header>
         <!-- /Navigation -->
 
@@ -79,7 +78,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>&copy; <span id="copyright-year">2024 stat</span> Moment</p>
+            <p>&copy; <span id="copyright-year"></span> Moment</p>
         </footer>
         <!-- Footer -->
 
@@ -88,6 +87,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
         crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/0bef6532fc.js" crossorigin="anonymous"></script>
+        <script src="{% static 'js/index.js' %}" type="module"></script>
         {% endblock %}
         {% block extra_js %}
         {% endblock %}
