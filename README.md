@@ -22,6 +22,7 @@ The application is available for viewing [here](https://moment-canvas-68ed5e5eed
 - [Testing & Debugging](#testing--debugging)
   - [Manual Testing](#manual-testing)
   - [Automated Testing](#automated-testing)
+- [Issues](#issues)
 - [Accessibility & Performance](#accessibility--performance)
   - [Lighthouse](#lighthouse)
   - [Colour Accessibility Validator](#colour-accessibility-validator)
@@ -95,6 +96,7 @@ Below is a simple ERD for `moment`'s models.
 
 #### The Charity Model
 Fields: name, slug, description, entry_donation, category, image
+Meta: ordered by community size (largest to smallest).
 
 - `name` : _CharField_ - represents the name of the charity. Max length of 150 characters. Must be unique.
 - `slug` : _SlugField_ - slugified `name` field. Max length of 150 characters. Must be unique.
@@ -105,8 +107,17 @@ Fields: name, slug, description, entry_donation, category, image
   - Maximum number of digits is 5. 
   - Contains help text. 
 - `category` : _CharField_ - represents the category to which the charity belongs. Pre-defined selection field, max length of 25 characters, with a default value of 'Other'.
+- `community_size` : _IntegerField_ - represents the number of users who have donated to the charity. Default value of 0, non-editable in admin or client-side.
+- `donated_to_by` : _ManyToManyField_ - represents the users who have donated to the charity. Non-editable in admin.
 - `image` : _CloudinaryField_ - charity banner image stored on [Cloudinary](https://cloudinary.com/)
 
+`def save(self, *args, **kwargs)`:
+Ensures the slug updates following a name change in the charity model.
+
+Method:
+Asserts whether the stored database charity name matches the instance Charity name with the same id. If the names do not match, regenerates (slugifies) the name and saves the model.
+
+#### The Donation Model
 
 ## Views & Templates
 ## Scope of Application
@@ -137,6 +148,8 @@ This section outlines procedures for manual testing. For automated testing, plea
 |---|---|---|---|---|
 
 - ## Automated Testing
+## Issues
+![admin slug issue](static/images/issue-admin-slug.png)
 ## Accessibility & Performance
 ### Lighthouse
 ### Colour Accessibility Validator
