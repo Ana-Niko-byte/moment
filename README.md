@@ -118,6 +118,17 @@ Method:
 Asserts whether the stored database charity name matches the instance Charity name with the same id. If the names do not match, regenerates (slugifies) the name and saves the model.
 
 #### The Donation Model
+Fields: donatee, charity, amount, donation_date
+Meta: ordered by donation date (latest to later).
+
+`donatee` : FK : User - represents the the user who donated to the charity. On account deletion, deletes donations.
+`charity` : FK : Charity - represents the charity to which the donation was made. On charity deletion, deletes donations.
+`amount` : DecimalField - reprents the amount to be donated. Validations: 
+  - Two decimal places.
+  - Must have a minimum value of €0.01.
+  - Maximum number of digits is 5. 
+  - Contains help text. 
+`donation_date` : DateField - represents the date on which the donation was made.
 
 ## Views & Templates
 ## Scope of Application
@@ -150,6 +161,11 @@ This section outlines procedures for manual testing. For automated testing, plea
 - ## Automated Testing
 ## Issues
 ![admin slug issue](static/images/issue-admin-slug.png)
+An issue involving the `Charity` model's `slug` field was noticed when updating the `name` field. The slug did not automatically update following a name change. 
+
+###### Solution: 
+This was rectified by adding Django's `save()` method, where the stored database charity name was checked against the instance Charity name with the same id. If the names did not match, the slug was regenerated (slugified) from the name and the model was saved.
+
 ## Accessibility & Performance
 ### Lighthouse
 ### Colour Accessibility Validator
