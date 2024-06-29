@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "8000-ananikobyte-moment-ttl4y55vll3.ws-us114.gitpod.io",
+    "8000-ananikobyte-moment-afvpc7dloam.ws-us114.gitpod.io",
     ".herokuapp.com",
 ]
 
@@ -50,11 +50,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'charity',
+    'cloudinary_storage',
     'django.contrib.sites',
+    'django_summernote',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'cloudinary',
+    'charity',
 ]
 
 SITE_ID = 1

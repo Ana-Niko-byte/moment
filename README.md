@@ -5,41 +5,41 @@ The application is available for viewing [here](https://moment-canvas-68ed5e5eed
 ## Introduction
 
 ## Table of Contents
-- Business/Social Goals
-- UX Goals
-- User Stories
-- Wireframes
-- Strategy
-- Target Audience
-- Key Information Deliverables
-- Features
-- Structure
-- Models
-- Views & Templates
-- Scope of Application
-- Aesthetics
-- Technologies
-- Testing & Debugging
-  - Manual Testing
-  - Automated Testing
-- Accessibility & Performance
-  - Lighthouse
-  - Colour Accessibility Validator
-  - HTML Validation
-  - CSS Validation
-  - JSHint Validation
-- Deployment
-  - Foreword
-  - Step 1: Create an App on Heroku
-  - Step 2: Connect to GitHub
-  - Step 3: Automatic Deploy (Optional)
-  - Step 4: Settings
-  - Step 5: Deploy Your Masterpiece
-  - Step 6: Where is my Application?
-- Forking a GitHub Repository
-- Cloning a GitHub Repository
-- Credits
-- Acknowledgements
+- [Business/Social Goals](#businesssocial-goals)
+- [UX Goals](#ux-goals)
+- [User Stories](#user-stories)
+- [Wireframes](#wireframes)
+- [Strategy](#strategy)
+- [Target Audience](#target-audience)
+- [Key Information Deliverables](#key-information-deliverables)
+- [Features](#features)
+- [Structure](#structure)
+- [Models](#models)
+- [Views & Templates](#views--templates)
+- [Scope of Application](#scope-of-application)
+- [Aesthetics](#aesthetics)
+- [Technologies](#technologies)
+- [Testing & Debugging](#testing--debugging)
+  - [Manual Testing](#manual-testing)
+  - [Automated Testing](#automated-testing)
+- [Accessibility & Performance](#accessibility--performance)
+  - [Lighthouse](#lighthouse)
+  - [Colour Accessibility Validator](#colour-accessibility-validator)
+  - [HTML Validation](#html-validation)
+  - [CSS Validation](#css-validation)
+  - [JSHint Validation](#jshint-validation)
+- [Deployment](#deployment)
+  - [Foreword](#foreword)
+  - [Step 1: Create an App on Heroku](#step-1-create-an-app-on-heroku)
+  - [Step 2: Connect to GitHub](#step-2-connect-to-github)
+  - [Step 3: Automatic Deploy (Optional)](#step-3-automatic-deploy-optional)
+  - [Step 4: Settings](#step-4-settings)
+  - [Step 5: Deploy Your Masterpiece](#step-5-deploy-your-masterpiece)
+  - [Step 6: Where is my Application?](#step-6-where-is-my-application)
+- [Forking a GitHub Repository](#forking-a-github-repository)
+- [Cloning a GitHub Repository](#cloning-a-github-repository)
+- [Credits](#credits)
+- [Acknowledgements](#acknowledgements)
 
 ## Business/Social Goals
 - As a first time visitor, I would like to view the 'moment' home page so that I have quick access to all relevant information to get started.
@@ -92,6 +92,22 @@ The application is available for viewing [here](https://moment-canvas-68ed5e5eed
 Below is a simple ERD for `moment`'s models.
 
 ![Moment ERD]()
+
+#### The Charity Model
+Fields: name, slug, description, entry_donation, category, image
+
+- `name` : _CharField_ - represents the name of the charity. Max length of 150 characters. Must be unique.
+- `slug` : _SlugField_ - slugified `name` field. Max length of 150 characters. Must be unique.
+- `description ` : _TextField_ - represents the charity aims and objectives. Max length of 300 characters.
+- `entry_donation` : _DecimalField_ - represents the minimum donation amount for users to enter the charity's community. Validations: 
+  - Two decimal places.
+  - Must have a minimum value of €0.01.
+  - Maximum number of digits is 5. 
+  - Contains help text. 
+- `category` : _CharField_ - represents the category to which the charity belongs. Pre-defined selection field, max length of 25 characters, with a default value of 'Other'.
+- `image` : _CloudinaryField_ - charity banner image stored on [Cloudinary](https://cloudinary.com/)
+
+
 ## Views & Templates
 ## Scope of Application
 ## Aesthetics
