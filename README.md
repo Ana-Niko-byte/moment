@@ -95,7 +95,8 @@ Below is a simple ERD for `moment`'s models.
 ![Moment ERD]()
 
 #### The Charity Model
-Fields: name, slug, description, entry_donation, category, image
+Fields: name, slug, description, entry_donation, category, image.
+
 Meta: ordered by community size (largest to smallest).
 
 - `name` : _CharField_ - represents the name of the charity. Max length of 150 characters. Must be unique.
@@ -118,7 +119,8 @@ Method:
 Asserts whether the stored database charity name matches the instance Charity name with the same id. If the names do not match, regenerates (slugifies) the name and saves the model.
 
 #### The Donation Model
-Fields: donatee, charity, amount, donation_date
+Fields: donatee, charity, amount, donation_date.
+
 Meta: ordered by donation date (latest to later).
 
 `donatee` : FK : User - represents the the user who donated to the charity. On account deletion, deletes donations.
@@ -129,6 +131,15 @@ Meta: ordered by donation date (latest to later).
   - Maximum number of digits is 5. 
   - Contains help text. 
 `donation_date` : DateField - represents the date on which the donation was made.
+
+#### The Profile Model
+Fields: user, first_name, last_name, charities, date_added
+
+`user` : FK : User - represents the user to whom the profile belongs. On account deletion, deletes the profile.
+`first_name` : CharField - represents the user's first name. Max length of 20 characters, can be blank.
+`last_name` : CharField - represents the user's last name. Max length of 30 characters, can be blank.
+`charities` : ManyToManyField - represents a list of charities to which the user has donated.
+`date_added` : DateField - represents the date the user created their profile.
 
 ## Views & Templates
 ## Scope of Application

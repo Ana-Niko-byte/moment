@@ -139,3 +139,50 @@ class Donation(models.Model):
 
     def __str__(self):
         return f'{self.amount} donated to "{self.charity}" by {self.user}'
+
+
+class Product(models.Model):
+    # Will be designed after main functionality has been incorporated
+    '''
+    Represents a Product (model). This is the end product of a finished
+    community canvas.
+
+    Attributes:
+
+    Meta:
+
+    Returns:
+    '''
+
+
+class Profile(models.Model):
+    '''
+    Represents a user Profile (model).
+
+    Attributes:
+    user : FK : User - the user to whom the profile belongs.
+    first_name : CharField - the user's first name.
+    last_name : CharField - the user's last name.
+    charities : ManyToManyField - a list of charities to which the user has donated.
+    date_added : DateField - the date the user created their profile.
+
+    Returns:
+    (str) : 'Profile for user: (user)'
+    '''
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='user_profile'
+    )
+    first_name = models.CharField(max_length=20, blank=True, null=True)
+    last_name = models.CharField(max_length=30, blank=True, null=True)
+    charities = models.ManyToManyField(
+        Charity,
+        related_name='user_charities',
+        blank=True,
+        editable=False
+    )
+    date_added = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Profile for user: {self.user}'
