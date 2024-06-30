@@ -48,4 +48,4 @@ class ProfileAdmin(SummernoteModelAdmin):
     Allows search-by 'user'.
     '''
     list_display = ('user', 'date_added')
-    search_fields = ['user']
+    search_fields = ['user', 'birth_date', 'charities']

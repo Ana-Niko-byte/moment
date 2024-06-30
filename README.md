@@ -133,9 +133,12 @@ Meta: ordered by donation date (latest to later).
 `donation_date` : DateField - represents the date on which the donation was made.
 
 #### The Profile Model
-The `Profile` model is unified to Django's `User` model for simplicity and ease of maintenance. Each registered `Moment` user has a profile where they can access and view their information.
-Fields: charities, date_added
+The `Profile` model has a OneToOne relationship with Django's `User` model for simplicity and ease of maintenance. Each registered `Moment` user has a profile where they can access and view their information.
+Fields: user, birth_date, location, charities, date_added
 
+`user` : OneToOneField - a direct relationship with Django's User model.
+`birth_date` : DateField - reprents the user's birth date. This field can be left blank.
+`location` : CharField - represents the user's location in the world. At the moment this can be filled in manually, but will later incorporate a selection field.
 `charities` : ManyToManyField - represents a list of charities to which the user has donated. This field can be blank, and is not editable.
 `date_added` : DateField - represents the date the user created their profile.
 
