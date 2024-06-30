@@ -133,12 +133,10 @@ Meta: ordered by donation date (latest to later).
 `donation_date` : DateField - represents the date on which the donation was made.
 
 #### The Profile Model
-Fields: user, first_name, last_name, charities, date_added
+The `Profile` model is unified to Django's `User` model for simplicity and ease of maintenance. Each registered `Moment` user has a profile where they can access and view their information.
+Fields: charities, date_added
 
-`user` : FK : User - represents the user to whom the profile belongs. On account deletion, deletes the profile.
-`first_name` : CharField - represents the user's first name. Max length of 20 characters, can be blank.
-`last_name` : CharField - represents the user's last name. Max length of 30 characters, can be blank.
-`charities` : ManyToManyField - represents a list of charities to which the user has donated.
+`charities` : ManyToManyField - represents a list of charities to which the user has donated. This field can be blank, and is not editable.
 `date_added` : DateField - represents the date the user created their profile.
 
 ## Views & Templates

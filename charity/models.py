@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from cloudinary.models import CloudinaryField
 from django.core.validators import MinValueValidator
 from django.utils.text import slugify
@@ -155,27 +155,17 @@ class Product(models.Model):
     '''
 
 
-class Profile(models.Model):
+class Profile(AbstractUser):
     '''
-    Represents a user Profile (model).
+    Represents a user Profile (model). This model is unified to Django's User.
 
     Attributes:
-    user : FK : User - the user to whom the profile belongs.
-    first_name : CharField - the user's first name.
-    last_name : CharField - the user's last name.
     charities : ManyToManyField - a list of charities to which the user has donated.
     date_added : DateField - the date the user created their profile.
 
     Returns:
     (str) : 'Profile for user: (user)'
     '''
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='user_profile'
-    )
-    first_name = models.CharField(max_length=20, blank=True, null=True)
-    last_name = models.CharField(max_length=30, blank=True, null=True)
     charities = models.ManyToManyField(
         Charity,
         related_name='user_charities',
