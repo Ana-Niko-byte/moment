@@ -27,7 +27,12 @@ def charity_donation(request, slug):
 
 def charity_detail(request, slug):
     charity = get_object_or_404(Charity, slug=slug)
+
+    context = {
+        'charity': charity,
+    }
     return render(
         request,
-        "charity/charity_detail.html"
+        "charity/charity_detail.html",
+        context
     )

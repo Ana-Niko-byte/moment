@@ -1,17 +1,22 @@
 /* Colour Specification */
 :root {
     --dark-text : rgb(44, 44, 44);
+    --white-text : rgb(246, 246, 246);
 }
 /* /Colour Specification */
 
 /* General */
 #jumbotron-img{
-    background-image: url(../images/hands.avif);
+    background-image: url(../images/chris-benson--EPTweMPILk-unsplash.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 750px;
     width: 100%;
+}
+
+.charity-details{
+    list-style: none;
 }
 /* /General */
 
@@ -19,6 +24,9 @@
 /* /Branding */
 
 /* Colours */
+.bb-orange{
+    border-bottom: 10px solid rgb(255, 174, 0);
+}
 /* /Colours */
 
 /* Links */

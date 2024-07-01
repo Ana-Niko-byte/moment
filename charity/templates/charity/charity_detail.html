@@ -1,9 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
-    <div class="row text-center">
-        <p>This is the charity detail page</p>
+<div class="container-fluid text-center">
+    <div class="row ms-2 mt-2">
+        {% include 'charity/breadcrumb.html' with charity_name=charity.name %}
     </div>
+    <h1>{{ charity.name }}</h1>
+    <div class="description my-5">
+        {{ charity.description | safe }}
+    </div>
+    <div class="community-details py-5" style="background-color: aliceblue;">
+        <ul class="d-flex charity-details d-flex justify-content-around">
+            <li>
+                <h5>
+                    <i class="fa-solid fa-xl fa-users me-3"></i>{} Community Members
+                </h5>
+            </li>
+            <li>
+                <h5>
+                    <i class="fa-solid fa-xl fa-location-dot me-3"></i>{} Active Locations
+                </h5>
+            </li>
+            <li>
+                <h5>
+                    <i class="fa-solid fa-xl fa-parachute-box me-3"></i>{} Monetary Aid Raised
+                </h5>
+            </li>
+        </ul>
+    </div>
+    <a href="{% url 'donate' charity.slug %}" class="btn btn-lg btn-warning my-5">Join Our Community</a>
 </div>
 {% endblock %}
