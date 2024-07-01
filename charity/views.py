@@ -9,6 +9,9 @@ from .forms import *
 
 # Create your views here.
 def charity_home(request):
+    '''
+
+    '''
     charities = Charity.objects.all()
 
     context = {
@@ -23,6 +26,9 @@ def charity_home(request):
 
 
 def charity_donation(request, slug):
+    '''
+
+    '''
     charity = get_object_or_404(Charity, slug=slug)
     return render(
         request,
@@ -31,6 +37,9 @@ def charity_donation(request, slug):
 
 
 def charity_detail(request, slug):
+    '''
+    
+    '''
     charity = get_object_or_404(Charity, slug=slug)
 
     context = {
@@ -43,6 +52,9 @@ def charity_detail(request, slug):
     )
 
 def contact(request):
+    '''
+
+    '''
     if request.method == 'POST':
         contactForm = ContactForm(data=request.POST)
         if contactForm.is_valid():
@@ -51,20 +63,14 @@ def contact(request):
             subject = contactForm.cleaned_data['subject']
             message = contactForm.cleaned_data['message']
 
+            recipient_list=["ananikolayenia@gmail.com", f"{email}"]
             send_mail(
-                subject=f"{subject}",
-                message=f"{message}",
+                subject=subject,
+                message=message,
                 from_email=settings.EMAIL_HOST_USER,
-                recipient_list=["ananikolayenia@gmail.com", f"{email}"],
-                # send_mail doesn't seem to have a reply_to? Check later in documentation
-                # reply_to=[f"{email}"],
+                recipient_list=recipient_list,
                 fail_silently=False,
             )
-
-            print('sending your message')
-            send_mail()
-            print('your message has been sent!')
-
             messages.add_message(
                 request, messages.SUCCESS,
                 '''Your message has been forwarded onto our team! We
