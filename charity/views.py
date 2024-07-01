@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -43,7 +43,6 @@ def charity_detail(request, slug):
     )
 
 def contact(request):
-    contactForm = ContactForm()
     if request.method == 'POST':
         contactForm = ContactForm(data=request.POST)
         if contactForm.is_valid():
@@ -57,6 +56,8 @@ def contact(request):
                 message=f"{message}",
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=["ananikolayenia@gmail.com", f"{email}"],
+                # send_mail doesn't seem to have a reply_to? Check later in documentation
+                # reply_to=[f"{email}"],
                 fail_silently=False,
             )
 
@@ -70,14 +71,13 @@ def contact(request):
                 endeavour to respond within 2 business days :)'''
             )
             return redirect('home')
-        else:
-            contactForm = ContactForm()
-    context = {
-        'contactForm': contactForm,
-    }
-    
-    return render(
-        request,
-        "charity/contact.html",
-        context
-    )
+    else:
+        contactForm = ContactForm()
+        context = {
+            'contactForm': contactForm,
+        }
+        return render(
+            request,
+            "charity/contact.html",
+            context
+        )
