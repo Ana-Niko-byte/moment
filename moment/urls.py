@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from charity.views import charity
+from charity.views import charity_home
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
