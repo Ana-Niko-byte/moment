@@ -1,29 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="jumbotron jumbotron-fluid">
-    <div class="container m-0 p-0">
-        <img src="../../../static/images/shell-water.jpg" alt="water" style="width: 100%; height: 500px;">
-    </div>
-</div>
-<div class="container">
+<div class="jumbotron jumbotron-fluid" id="jumbotron-img"></div>
+<div class="container my-5 text-center">
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
         ut labore et dolore magna aliqua. In iaculis nunc sed augue lacus viverra. Adipiscing 
         elit duis tristique sollicitudin nibh. Tempus quam pellentesque nec nam aliquam sem et 
         tortor consequat. Leo duis ut diam quam nulla. Iaculis urna id volutpat lacus. At erat 
-        pellentesque adipiscing commodo elit. Vel facilisis volutpat est velit egestas. Metus 
+        pellentesque adipiscing commodo elit. 
+         
         dictum at tempor commodo ullamcorper. Rutrum tellus pellentesque eu tincidunt tortor 
         aliquam. Sed vulputate odio ut enim blandit. Pellentesque id nibh tortor id aliquet 
         lectus proin nibh nisl. In fermentum posuere urna nec tincidunt praesent semper feugiat. 
         Leo vel orci porta non. Ut sem viverra aliquet eget sit amet tellus cras adipiscing.
     </p>
 </div>
-<div class="container-fluid text-center">
-    <a href="" class="btn btn-info">Button</a>
-    <a href="" class="btn btn-info">Button</a>
-    <a href="" class="btn btn-info">Button</a>
-    <a href="" class="btn btn-info">Button</a>
+<div class="container-fluid text-center d-flex mb-5">
+    <a href="" class="col-sm-12 col-md-3 btn btn-lg me-1 py-5 btn-info">Button</a>
+    <a href="" class="col-sm-12 col-md-3 btn btn-lg me-1 py-5 btn-info">Button</a>
+    <a href="" class="col-sm-12 col-md-3 btn btn-lg me-1 py-5 btn-info">Button</a>
+    <a href="" class="col-sm-12 col-md-3 btn btn-lg py-5 btn-info">Button</a>
 </div>
 <div class="container">
     {% for charity in charities %}
@@ -33,9 +30,11 @@
                 <div class="description">
                     {{ charity.description | safe }}
                 </div>
-                <a href="{% url 'donate' charity.slug %}" class="btn btn-info">Read More ></a>
+                <a href="{% url 'charity_detail' charity.slug %}" class="btn btn-info">Read More ></a>
+                <a href="{% url 'donate' charity.slug %}" class="btn btn-info">Donate ></a>
             </div>
-            <img class="card-img-right flex-auto d-none d-md-block" src="{{ charity.image.url }}" alt="{{ charity.name }} banner" width="50" height="50">
+            <img class="card-img-right flex-auto d-none d-md-block" src="{{ charity.image.url }}" 
+            alt="{{ charity.name }} banner" width="50" height="50">
         </div>
     </div>
     {% endfor %}

@@ -1,6 +1,8 @@
 {% load static %}
 {% url 'home' as home_url %}
 {% url 'donate' as donation_url %}
+{% url 'charity_detail' as charity_detail_url %}
+
 {% url 'account_login' as signin_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as signout_url %}
@@ -37,35 +39,34 @@
             <nav class="navbar navbar-expand-md flex justify-content-between" style="background-color: aliceblue;">
                 <a href="{{ home_url }}"><img src="../static/images/moment-logo-removebg-preview.png" alt="moment logo" width="250px;"></a>
                 <ul class="navbar-nav">
-                    <li class="nax-item px-2">
-                        <a href="{{ home_url }}">Home</a>
+                    <li class="nav-item px-2 mx-1">
+                        <a href="{{ home_url }}"><i class="fa-solid fa-leaf me-1"></i>Home</a>
                     </li>
-                    <li class="nax-item px-2">
-                        <a href="">Donate</a>
-                    </li>
-                    <li class="nax-item px-2">
-                        <a href="">About Us</a>
+                    <li class="nav-item px-2 mx-1">
+                        <a href=""><i class="fa-solid fa-heart-circle-plus me-1"></i>Donate</a>
                     </li>
                     <!-- If authenticated and has donated. -->
-                    <li class="nax-item px-2">
-                        <a href="">Your Community</a>
+                    <li class="nav-item px-2 mx-1">
+                        <a href=""><i class="fa-solid fa-users me-1"></i>Your Community</a>
                     </li>
                     <!-- /If authenticated and has donated. -->
                 </ul>
-                <ul class="navbar-nav">
-                    {% if not request.user.is_authenticated %}
-                    <li class="nax-item px-2">
-                        <a href="{{ signup_url }}" class="btn btn-info btn-lg">Sign Up</a>
-                    </li>
-                    <li class="nax-item px-2">
-                        <a href="{{ signin_url }}" class="btn btn-info btn-lg">Sign In</a>
-                    </li>
-                    {% else %}
-                    <li class="nax-item px-2">
-                        <a href="{{ signout_url }}" class="btn btn-info btn-lg">Sign Out</a>
-                    </li>
-                    {% endif %}
-                </ul>
+                <div class="button-container col-2 d-flex justify-content-center">
+                    <ul class="navbar-nav">
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-item px-2 mx-1">
+                            <a href="{{ signup_url }}" class="btn btn-info">Sign Up</a>
+                        </li>
+                        <li class="nav-item px-2 mx-1">
+                            <a href="{{ signin_url }}" class="btn btn-info">Sign In</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item px-2 mx-1">
+                            <a href="{{ signout_url }}" class="btn btn-info">Sign Out</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </nav>
 
             <!-- Django Messages -->

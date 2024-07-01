@@ -23,3 +23,11 @@ def charity_donation(request, slug):
         request,
         "charity/donation.html"
     )
+
+
+def charity_detail(request, slug):
+    charity = get_object_or_404(Charity, slug=slug)
+    return render(
+        request,
+        "charity/charity_detail.html"
+    )

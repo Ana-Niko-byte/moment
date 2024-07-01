@@ -1,0 +1,29 @@
+/* Colour Specification */
+:root {
+    --dark-text : rgb(44, 44, 44);
+}
+/* /Colour Specification */
+
+/* General */
+#jumbotron-img{
+    background-image: url(../images/hands.avif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100%;
+}
+/* /General */
+
+/* Branding */
+/* /Branding */
+
+/* Colours */
+/* /Colours */
+
+/* Links */
+.nav-item a{
+    text-decoration: none;
+    color: var(--dark-text);
+}
+/* /Links */
