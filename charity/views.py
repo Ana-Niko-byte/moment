@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
-from django.core.mail import EmailMessage
+from django.core.mail import send_mail
+from django.conf import settings
 
 from .models import *
 from .forms import *
@@ -44,8 +45,25 @@ def charity_detail(request, slug):
 def contact(request):
     contactForm = ContactForm()
     if request.method == 'POST':
+        contactForm = ContactForm(data=request.POST)
         if contactForm.is_valid():
-            contactForm = ContactForm()
+            name = contactForm.cleaned_data['name']
+            email = contactForm.cleaned_data['email']
+            subject = contactForm.cleaned_data['subject']
+            message = contactForm.cleaned_data['message']
+
+            send_mail(
+                subject=f"{subject}",
+                message=f"{message}",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=["ananikolayenia@gmail.com", f"{email}"],
+                fail_silently=False,
+            )
+
+            print('sending your message')
+            send_mail()
+            print('your message has been sent!')
+
             messages.add_message(
                 request, messages.SUCCESS,
                 '''Your message has been forwarded onto our team! We
