@@ -177,6 +177,16 @@ An issue involving the `Charity` model's `slug` field was noticed when updating 
 ###### Solution: 
 This was rectified by adding Django's `save()` method, where the stored database charity name was checked against the instance Charity name with the same id. If the names did not match, the slug was regenerated (slugified) from the name and the model was saved.
 
+![contact form 500 issue](static/images/contact-form-error.png)
+An issue involving the `ContactForm` was noticed when trying to send emails via Django's `send_mail`. While the emails sent correctly to the specified address (from the first commit, although the `subject` of the email was incorrectly being retrieved as the database abbreviate, e.g. _'General Query'_, was retrieved as _'G'_), the page would consistently fail to redirect and would display a `500` status page.
+
+###### Solution:
+Gitpod experiences an _'OSError: [Errno 101] Network is unreachable'_ when handling any form data. As such, the decision was made to temporarily switch back over to VSC, where the form could be tested significantly faster without needing to push for deployment (as this was the only place the form could be tested properly). 
+
+`send_mail()` was removed after the main send_mail was defined - a confusing oversight on my part, where I attempted to 'call' the send_mail module. Removing this helped rectify the error and now the home page and Django success messages display appropriately. 
+
+_Note: It is likely that a success page will be added as a redirection page instead of the home page._
+
 ## Accessibility & Performance
 ### Lighthouse
 ### Colour Accessibility Validator
