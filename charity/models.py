@@ -34,6 +34,7 @@ class Charity(models.Model):
     donated_to_by : ManyToManyField - non-editable, users who have donated to
     the charity.
     image : CloudinaryField - the charity banner image.
+    approved : BooleanField - administration approval.
 
     Meta:
     Orders by community size (largest to smallest).
@@ -91,9 +92,15 @@ class Charity(models.Model):
         If the names do not match, regenerates (slugifies) the name and
         saves the model.
         '''
-        if self.name != Charity.objects.get(id=self.id).name:
-            self.slug = slugify(self.name)
-        super(Charity, self).save(*args, **kwargs)
+        try:
+            if self.name != Charity.objects.get(id=self.id).name:
+                self.slug = slugify(self.name)
+            super(Charity, self).save(*args, **kwargs)
+        # Adding new charity via form threw DoesotExist error.
+        # Wrapping in try except + saving navigates this issue.
+        except Charity.DoesNotExist:
+                super(Charity, self).save(*args, **kwargs)
+
 
 
 class Product(models.Model):

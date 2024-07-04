@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils.text import slugify
 
 from .models import *
 from .forms import *
@@ -81,7 +82,22 @@ def contact(request):
 def create_charity_account(request):
     '''
     '''
-    charityForm = CharityForm()
+    if request.method == 'POST':
+        charityForm = CharityForm(data=request.POST)
+        if charityForm.is_valid():
+            charity = charityForm.save(commit=False)
+            charity.slug = slugify(charity.name)
+            charity.community_size = 0
+            charity.approved = False
+            charity.save()
+            messages.add_message(
+                request, messages.SUCCESS, 
+                '''Your information has been successfully sent to our admins. 
+                We should have all your information revAdded successfully!'''
+            )
+        else:
+            charityForm = CharityForm()
+
     context = {
         'charityForm': CharityForm,
     }
