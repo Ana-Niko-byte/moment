@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'cloudinary',
     'charity',
+    'donation',
 ]
 
 SITE_ID = 1

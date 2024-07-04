@@ -22,22 +22,6 @@ class CharityAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
 
 
-@admin.register(Donation)
-class DonationAdmin(SummernoteModelAdmin):
-    '''
-    A class registering the Donation model using Django Summernote.
-
-    Methods:
-    Displays fields 'charity', 'amount', 'donatee', 'donation_date' 
-    in a list in admin.
-    Allows search-by 'charity' and 'donatee'.
-    Allows quick filtering by 'charity', 'donatee' and 'donation_date'.
-    '''
-    list_display = ('charity', 'amount', 'donatee', 'donation_date')
-    search_fields = ['charity', 'donatee']
-    list_filter = ('charity', 'donatee', 'donation_date')
-
-
 @admin.register(Profile)
 class ProfileAdmin(SummernoteModelAdmin):
     '''

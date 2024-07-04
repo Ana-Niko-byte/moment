@@ -95,52 +95,6 @@ class Charity(models.Model):
         super(Charity, self).save(*args, **kwargs)
 
 
-class Donation(models.Model):
-    '''
-    Represents a Donation (model) with basic information.
-
-    Attributes:
-    donatee : FK : User - the user who made the donation.
-    charity : FK : Charity - the charity to which the donation was made.
-    amount : DecimalField - the amount to be donated.
-    donation_date : DateField - the date on which the donation was made.
-
-    Meta:
-    Orders by donation date (latest to later).
-
-    Returns:
-    (str) : '(amount) donated to "(charity)" by (user)'.
-    '''
-    donatee = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='charity_donatee'
-    )
-    charity = models.ForeignKey(
-        Charity,
-        on_delete=models.CASCADE,
-        related_name='charity_donation'
-    )
-    amount = models.DecimalField(
-        decimal_places=2,
-        validators=[
-            MinValueValidator(
-                0.01,
-                message='Please ensure min donation is greater than €0.01'
-            ),
-        ],
-        max_digits=5,
-        help_text='The donation made by the user.'
-    )
-    donation_date = models.DateField(auto_now_add=True)
-
-    class Meta:
-        ordering = ['-donation_date']
-
-    def __str__(self):
-        return f'{self.amount} donated to "{self.charity}" by {self.user}'
-
-
 class Product(models.Model):
     # Will be designed after main functionality has been incorporated
     '''
