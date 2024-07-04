@@ -1,5 +1,14 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView
+from django.shortcuts import render
+from .forms import *
 
-class donation_view(TemplateView):
-    template_name = "donation.html"
+
+def make_donation(request):
+    donationForm = DonationForm()
+    context = {
+        'donationForm': donationForm,
+    }
+    return render(
+        request, 
+        'donation/donation.html',
+        context
+    )

@@ -1,34 +1,35 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="container-fluid text-center">
+<div class="container-fluid">
     <div class="row ms-2 mt-2">
         {% include 'charity/breadcrumb.html' with charity_name=charity.name %}
     </div>
-    <h1>{{ charity.name }}</h1>
-    <div class="description my-5">
-        {{ charity.description | safe }}
+    <div class="content-container">
+        <div class="row">
+            <div class="col-md-3 col-sm-12 pt-5" style="background-color: lightgray;">
+                <h1>{{ charity.name }}</h1>
+                <div class="description my-5">
+                    {{ charity.description | safe }}
+                </div>
+                <div class="icons">
+                    <ul class="charity-details">
+                        <li>
+                            <i class="fa-solid fa-sm fa-users me-3"></i>{} Community Members
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-sm fa-location-dot me-3"></i>{} Active Locations
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-sm fa-parachute-box me-3"></i>{} Monetary Aid Raised
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-12" style="background-color: beige;">
+                <img src="../.../../../../static/images/placeholder.png" alt="" style="height: 500px;">
+            </div>
+        </div>
     </div>
-    <div class="community-details py-5" style="background-color: aliceblue;">
-        <ul class="d-flex charity-details d-flex justify-content-around">
-            <li>
-                <h5>
-                    <i class="fa-solid fa-xl fa-users me-3"></i>{} Community Members
-                </h5>
-            </li>
-            <li>
-                <h5>
-                    <i class="fa-solid fa-xl fa-location-dot me-3"></i>{} Active Locations
-                </h5>
-            </li>
-            <li>
-                <h5>
-                    <i class="fa-solid fa-xl fa-parachute-box me-3"></i>{} Monetary Aid Raised
-                </h5>
-            </li>
-        </ul>
-    </div>
-    <!-- Donation will be moved to Donation app -->
-    <!-- <a href="{% url 'donate' charity.slug %}" class="btn btn-lg btn-warning my-5">Join Our Community</a> -->
 </div>
 {% endblock %}

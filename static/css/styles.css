@@ -2,6 +2,8 @@
 :root {
     --dark-text : rgb(44, 44, 44);
     --white-text : rgb(246, 246, 246);
+    --light-grey : rgb(161, 161, 161);
+    --orange : orange;
 }
 /* /Colour Specification */
 
@@ -43,4 +45,16 @@ body{
     font-size: 1rem;
     color: var(--dark-text);
 }
+
+.breadcrumb-item a{
+    text-decoration: none;
+    color: var(--light-grey);
+    transition: all 0.2s ease;
+}
 /* /Links */
+
+/* UIUX */
+.breadcrumb-item a:hover{
+    color: var(--orange);
+}
+/* /UIUX */
