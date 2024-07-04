@@ -1,0 +1,44 @@
+{% extends "../base.html" %}
+{% load static %}
+{% load i18n %}
+{% load allauth account %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center text-center">
+        <div class="heading-container text-center mb-4">
+            <h1>Sign In</h1>
+            <p>Don't have an account? <a href="{{ signup_url }}">Sign Up</a></p>
+        </div>
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            {% url 'account_login' as login_url %}
+            {% element form form=form method="post" action=login_url tags="entrance,login" %}
+
+                {% slot body %}
+                    {% csrf_token %}
+                    {% element fields form=form unlabeled=True %}
+                    {% endelement %}
+                    {{ redirect_field }}
+                {% endslot %}
+
+                {% slot actions %}
+                    <button type="submit" class="btn btn-lg btn-warning">Sign In</button>
+                {% endslot %}
+
+            {% endelement %}
+
+        {% if LOGIN_BY_CODE_ENABLED %}
+            {% element hr %}
+            {% endelement %}
+            {% element h2 %}
+                {% element button href=request_login_code_url tags="prominent,login,secondary" %}
+                    {% trans "Mail me a sign-in code" %}
+                {% endelement %}
+            {% endelement %}
+        {% endif %}
+        {% if SOCIALACCOUNT_ENABLED %}
+            {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
