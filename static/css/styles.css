@@ -5,6 +5,10 @@
 }
 /* /Colour Specification */
 
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@300..700&family=Quintessential&display=swap');
+/* /Fonts */
+
 /* General */
 #jumbotron-img{
     background-image: url(../images/chris-benson--EPTweMPILk-unsplash.jpg);
@@ -21,6 +25,9 @@
 /* /General */
 
 /* Branding */
+body{
+    font-family: "Indie Flower", cursive;
+}
 /* /Branding */
 
 /* Colours */

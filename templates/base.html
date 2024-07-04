@@ -46,12 +46,32 @@
                     <li class="nav-item px-2 mx-1">
                         <a href="{{ contact_url }}"><i class="fa-solid fa-paper-plane me-1"></i>Contact</a>
                     </li>
-                    <!-- If authenticated and has donated. -->
-                    <li class="nav-item px-2 mx-1">
-                        <a href=""><i class="fa-solid fa-users me-1"></i>Your Community</a>
+                    <li class="nax-item px-2 mx-1 dropdown">
+                        <a href="" id="user-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user fa-lg me-1"></i>My Account
+                        </a>
+                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                            {% if request.user.is_authenticated %}
+                                <a href="" class="dropdown-item pt-3 ms-4">
+                                    <i class="fa-regular fa-user me-1"></i>Profile
+                                </a>
+                                <a href="" class="dropdown-item pt-3 ms-4">
+                                    <i class="fa-solid fa-users me-1"></i>Communities
+                                </a>
+                                <a href="{{ signout_url }}" class="dropdown-item pt-3 ms-4">
+                                    <i class="fa-solid fa-arrow-right-from-bracket me-1"></i>Sign Out
+                                </a>
+                            {% else %}
+                                <a href="{{ signup_url }}" class="dropdown-item pt-3 ms-4">
+                                    <i class="fa-solid fa-user-plus me-1"></i>Sign Up
+                                </a>
+                                <a href="{{ signin_url }}" class="dropdown-item pt-3 ms-4">
+                                    <i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Sign In
+                                </a>
+                            {% endif %}
+                        </div>
                     </li>
-                    <!-- /If authenticated and has donated. -->
-                    {% if not request.user.is_authenticated %}
+                    <!-- {% if not request.user.is_authenticated %}
                     <li class="nav-item px-2 mx-1">
                         <a href="{{ signup_url }}">
                             <i class="fa-solid fa-user-plus me-1"></i>Sign Up
@@ -68,7 +88,7 @@
                             <i class="fa-solid fa-arrow-right-from-bracket me-1"></i>Sign Out
                         </a>
                     </li>
-                    {% endif %}
+                    {% endif %} -->
                 </ul>
                 <div class="button-container">
                     <ul class="navbar-nav">
