@@ -68,6 +68,7 @@ class Charity(models.Model):
         editable=False
     )
     image = CloudinaryField('image', default='placeholder')
+    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-community_size']

@@ -25,17 +25,6 @@ def charity_home(request):
     )
 
 
-def charity_donation(request, slug):
-    '''
-
-    '''
-    charity = get_object_or_404(Charity, slug=slug)
-    return render(
-        request,
-        "charity/donation.html"
-    )
-
-
 def charity_detail(request, slug):
     '''
     
@@ -53,7 +42,7 @@ def charity_detail(request, slug):
 
 def contact(request):
     '''
-
+    A view for sending queries via the ContactForm on the Contact page.
     '''
     if request.method == 'POST':
         contactForm = ContactForm(data=request.POST)
@@ -87,3 +76,17 @@ def contact(request):
             "charity/contact.html",
             context
         )
+
+
+def create_charity_account(request):
+    '''
+    '''
+    charityForm = CharityForm()
+    context = {
+        'charityForm': CharityForm,
+    }
+    return render(
+        request,
+        'charity/create_charity.html',
+        context
+    )

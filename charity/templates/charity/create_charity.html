@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center">Add Charity</h2>
+    <div class="row d-flex justify-content-center">
+        <div class="col-6">
+            <form id="charityForm" method="post">
+                {% csrf_token %}
+                {{ charityForm | crispy }}
+                <button type="submit" class="btn btn-warning">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

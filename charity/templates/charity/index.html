@@ -1,41 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="jumbotron jumbotron-fluid d-flex align-items-end bb-orange" id="jumbotron-img">
+<div class="jumbotron jumbotron-fluid d-flex align-items-end bb-orange mb-5" id="jumbotron-img">
     <div class="jumbo-wording p-5">
-        <h1 class="text-white">It only takes a moment <br> to make a change</h1>
+        <h1 class="text-white">Take a Moment. Make a Change.</h1>
         <p class="text-white">Join a community of like-minded individuals to make the world a better place.</p>
-        <a href="" class="btn btn-warning"><i class="fa-solid fa-heart me-2"></i>Donate</a>
+        <a href="" class="btn btn-warning btn-lg mt-3"><i class="fa-solid fa-heart me-2"></i>Make a Donation</a>
     </div>
 </div>
-<div class="container">
-    <div class="row d-flex justify-content-between">
-        <p class="col-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-            ut labore et dolore magna aliqua. In iaculis nunc sed augue lacus viverra. Adipiscing 
-            elit duis tristique sollicitudin nibh. Tempus quam pellentesque nec nam aliquam sem et 
-            tortor consequat. Leo duis ut diam quam nulla. Iaculis urna id volutpat lacus. At erat 
-            pellentesque adipiscing commodo elit. 
-             
-            dictum at tempor commodo ullamcorper. Rutrum tellus pellentesque eu tincidunt tortor 
-            aliquam. Sed vulputate odio ut enim blandit. Pellentesque id nibh tortor id aliquet 
-            lectus proin nibh nisl. In fermentum posuere urna nec tincidunt praesent semper feugiat. 
-            Leo vel orci porta non. Ut sem viverra aliquet eget sit amet tellus cras adipiscing.
-        </p>
-        <img src="../../../static/images/luis-vaz-9RIFeVL73sk-unsplash.jpg" class="col-6" alt="" height="350px">
-    </div>
-</div>
-<div class="container">
+
+<div class="container d-flex justify-content-center">
     {% for charity in charities %}
     <div class="col-md-5">
         <div class="card">
-            <div class="charity-image" style="background-image: url(charity.image.url);"></div>
+            <div class="charity-image"></div>
             <div class="card-body d-flex flex-column align-items-start">
                 <p class="h3">{{charity.name}}</p>
                 <div class="description">
                     {{ charity.description | safe }}
                 </div>
-                <a href="{% url 'charity_detail' charity.slug %}" class="btn btn-info">
+                <a href="{% url 'charity_detail' charity.slug %}" class="btn btn-warning btn-lg">
                     Read More<i class="fa-solid fa-angle-right ms-2"></i>
                 </a>
             </div>

@@ -52,7 +52,7 @@ class Donation(models.Model):
         ordering = ['-donation_date']
 
     def __str__(self):
-        return f'{self.amount} donated to "{self.charity}" by {self.user}'
+        return f'New Donation: {self.donation_amount} to Charity: "{self.charity.name}"'
 
     def _generate_donation_number(self):
         return uuid.uuid4().hex.upper()

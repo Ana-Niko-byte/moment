@@ -111,6 +111,7 @@ Meta: ordered by community size (largest to smallest).
 - `community_size` : _IntegerField_ - represents the number of users who have donated to the charity. Default value of 0, non-editable in admin or client-side.
 - `donated_to_by` : _ManyToManyField_ - represents the users who have donated to the charity. Non-editable in admin.
 - `image` : _CloudinaryField_ - charity banner image stored on [Cloudinary](https://cloudinary.com/)
+- `approved` : _BooleanField_ - administration approval for any charity added to the website via the charity form.
 
 `def save(self, *args, **kwargs)`:
 Ensures the slug updates following a name change in the charity model.

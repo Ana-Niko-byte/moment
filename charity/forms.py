@@ -1,4 +1,5 @@
 from django import forms
+from .models import Charity
 
 
 SUBJECTS = (
@@ -41,3 +42,13 @@ class ContactForm(forms.Form):
             attrs={'placeholder': 'Please tell us your query...'}
         )
     )
+
+
+class CharityForm(forms.ModelForm):
+    class Meta:
+        model = Charity
+        fields = ('name', 'description', 'entry_donation', 'category', 'image',)
+        labels = {
+            'description' : 'Description (400 characters)',
+            'entry_donation' : 'Min. Donation (€)'
+        }
