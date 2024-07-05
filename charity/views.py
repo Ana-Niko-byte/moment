@@ -8,6 +8,7 @@ from django.utils.text import slugify
 from .models import *
 from .forms import *
 
+
 # Create your views here.
 def charity_home(request):
     '''
@@ -18,7 +19,7 @@ def charity_home(request):
     context = {
         'charities' : charities,
     }
-    
+
     return render(
         request,
         "charity/index.html",
@@ -28,7 +29,7 @@ def charity_home(request):
 
 def charity_detail(request, slug):
     '''
-    
+
     '''
     charity = get_object_or_404(Charity, slug=slug)
 
@@ -40,6 +41,7 @@ def charity_detail(request, slug):
         "charity/charity_detail.html",
         context
     )
+
 
 def contact(request):
     '''
@@ -53,7 +55,7 @@ def contact(request):
             subject = contactForm.cleaned_data['subject']
             message = contactForm.cleaned_data['message']
 
-            recipient_list=["ananikolayenia@gmail.com", f"{email}"]
+            recipient_list = ["ananikolayenia@gmail.com", f"{email}"]
             send_mail(
                 subject=subject,
                 message=message,
@@ -91,12 +93,18 @@ def create_charity_account(request):
             charity.approved = False
             charity.save()
             messages.add_message(
-                request, messages.SUCCESS, 
-                '''Your information has been successfully sent to our admins. 
+                request, messages.SUCCESS,
+                '''Your information has been successfully sent to our admins.
                 We should have all your information revAdded successfully!'''
             )
         else:
             charityForm = CharityForm()
+            messages.add_message(
+                request, messages.error,
+                '''Please review the form and fill in all necessary
+                information. For any queries, please contact our team on our
+                dedicated Contact page.'''
+            )
 
     context = {
         'charityForm': CharityForm,

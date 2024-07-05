@@ -1,8 +1,12 @@
-# `Moment`
+# `Pixel`
 The application is available for viewing [here](https://moment-canvas-68ed5e5eed98.herokuapp.com/).
+
+Also available for viewing here:
+[Facebook Page](https://www.facebook.com/profile.php?id=61561932423026).
 
 ![Moment Responsive Image]()
 ## Introduction
+Pixel is a full-stack Django-framework collaboration platform, offering artists and drawing enthusiasts the unique opportunity to connect and collaborate globally in the name of charity. Visitors wishing to join one of Pixel's vast artistic communities need only make a small donation to a charity (or charities) of their choosing, and they immediately gain access to a unique network of artists and like-minded individuals. Additionally, users may access a community canvas on which they may collaborate on a piece with others or leave their individual mark, a chatroom, and the ability to create their own charity and register it. Pixel is a non-profit organisation, with all donations and canvas sales going to the charity. 
 
 ## Table of Contents
 - [Business/Social Goals](#businesssocial-goals)
@@ -12,6 +16,9 @@ The application is available for viewing [here](https://moment-canvas-68ed5e5eed
 - [Strategy](#strategy)
 - [Target Audience](#target-audience)
 - [Key Information Deliverables](#key-information-deliverables)
+  - [Client Side](#client-side)
+  - [Technical](#technical)
+  - [Marketing](#marketing)
 - [Features](#features)
 - [Structure](#structure)
 - [Models](#models)
@@ -57,14 +64,17 @@ The application is available for viewing [here](https://moment-canvas-68ed5e5eed
 - As a (potential) donatee, I require the option of signing-up, signing-in and signing-out of my account.
 - As a site visitor, I would like the option of signing up for the Moment Newsletter, without needing to register for an account.
 - As a site user/donatee, I would like access to Moment's social media so that I could follow the page and stay up to date.
+- As a charity organisation, I would like the option of registering my charity so that I could have my own community and raise money for my cause.
 
 ## UX Goals
-- As a site user/donatee, I require all pages to be displayed based on the condition of my authentication, to avoid confusion and site errors, so I should be redirected to the relevant page without coming across site errors and unexpected renderings. 
-- As a site user/donatee, I would like all pages to follow the same branding guidelines - this includes font family, colours (colour palette), image styles, spacing, and effects. Colours should convey the correct emotions, so as to ensure the intended branding message and motives.
+- As a site user/donatee, I would like fast access to only the pages that would benefit my experience.
+  -  All pages should be displayed based on whether I am registered/logged in.
+  - I should be redirected to relevant pages and without coming across errors.
+- As a site user/donatee, I would like all pages to follow the same branding guidelines - this includes font family, colours (colour palette), image styles, spacing, and effects. 
+- As a site visitor and/or charity organisation, I would like colours to convey the correct emotions to ensure the intended branding message and motives.
 - As a site user/donatee, I would like all pages to be responsive to ensure I have a good user experience. This includes best practices in legibility, colour contrast, font sizes, branding, and element visibility.
 
 ## User Stories
-
 | Id | User Story | Label | User Story Testing |
 | ----- | ----- | ----- | ----- |
 | 3 | As a first time visitor, I would like to view the 'moment' home page so that I have quick access to all relevant information to get started. | `must-have` | ----- |
@@ -81,14 +91,88 @@ The application is available for viewing [here](https://moment-canvas-68ed5e5eed
 | 8/9 | As a (potential) donatee, I require the option of signing-up, signing-in and signing-out of my account. | `must-have` | ----- |
 | 10 | As a site visitor, I would like the option of signing up for the Moment Newsletter, without needing to register for an account. | `must-have` | ----- |
 | 24 | As a site user/donatee, I would like access to Moment's social media so that I could follow the page and stay up to date. | `good-to-have` | ----- |
+| 31 | As a charity organisation, I would like the option of registering my charity so that I could have my own community and raise money for my cause. | `should-have` |  |
 
 ## Wireframes
-![Moment Wireframe]()
+![Moment Wireframe](static/images/pixel-wireframe.png)
+
 ## Strategy
 ## Target Audience
+- Charity Organisations
+- Artists
+- Drawing Enthusiasts 
+  - 16+ years of age (payment)
+
 ## Key Information Deliverables
+For the purposes of navigation, the key information deliverables for this project have been split into three sections, each focusing on a different vital aspect of the project.
+
+#### Client-Side
+- _Home page_ with all relevant information about the platform.
+- _Donation page_ with _Stripe_ Payments.
+- Community Page
+  - _Canvas_ (Canvas API + Django Channels)
+  - _Chatroom_
+- Creation of _Personal/Charity Profiles_ for audience expansion.
+
+#### Technical
+- _Contact page_ queries reaching Pixel _Email_.
+- _Stripe_ Payments
+- Testing files for all app views, urls, and models.
+
+#### Marketing
+- [Facebook Page](https://www.facebook.com/profile.php?id=61561932423026)
+- Clear and intuative branding
+- Legibility and responsiveness of all elements on all screen sizing
+
 ## Features
-## Structure 
+## Structure
+- Navigation Bar
+  - Logo
+  - Links
+  - Account Management Button
+
+- Home Page*
+
+- Contact Page
+  - Contact Form
+    - Validation
+    - To-Email Queries
+    - Success Message
+
+- Our Work*
+  - Our Team*
+  - Our Communities*
+
+_If user is not signed-in:_
+- Create Account (Dropdown button menu)
+  - Create Charity
+    - Charity Form
+    - Success Message
+    - Error Message
+    - Admin Approval
+  - Sign Up/ Sign In (allauth)
+    - Sign Up/ Sign In Form
+    - Mandatory Email Verification
+    - Confirmation Message
+
+_If user is signed in:_
+- Manage Account (Dropdown button menu)
+  - Create Charity (same functionality)
+    - Charity Form
+    - Success Message
+    - Error Message
+    - Admin Approval
+  - My Communities*
+  - My Payment*
+  - Sign Out (allauth)
+    - Sign Out Form
+    - Confirmation Message
+
+- Footer
+  - Links
+  - Copyright
+    - Dynamic Year
+
 ## Models
 Below is a simple ERD for `moment`'s models.
 
@@ -114,24 +198,36 @@ Meta: ordered by community size (largest to smallest).
 - `approved` : _BooleanField_ - administration approval for any charity added to the website via the charity form.
 
 `def save(self, *args, **kwargs)`:
-Ensures the slug updates following a name change in the charity model.
+Ensures the slug updates following a name change in the charity model. A `try-except` block catches the `DoesNotExist` error when creating new instances via form and saves the model accordingly.
 
 Method:
+Try:
 Asserts whether the stored database charity name matches the instance Charity name with the same id. If the names do not match, regenerates (slugifies) the name and saves the model.
+Except: 
+Model.DoesNotExist
+Saves the model as a new model instance.
 
 #### The Donation Model
 Fields: donatee, charity, amount, donation_date.
 
-Meta: ordered by donation date (latest to later).
+Meta: ordered by donation date (earliest to latest).
 
-`donatee` : FK : User - represents the the user who donated to the charity. On account deletion, deletes donations.
+`donation_number` : CharField - represents a unique donation number for each donation. Max length of 32, automatically generated as uuid, non-editable in admin.
+`donation_user` : FK : User - represents the the user who donated to the charity. On account deletion, deletes donations.
 `charity` : FK : Charity - represents the charity to which the donation was made. On charity deletion, deletes donations.
-`amount` : DecimalField - reprents the amount to be donated. Validations: 
+`donation_amount` : DecimalField - reprents the amount to be donated. Validations: 
   - Two decimal places.
   - Must have a minimum value of €0.01.
   - Maximum number of digits is 5. 
   - Contains help text. 
 `donation_date` : DateField - represents the date on which the donation was made.
+
+
+`def _generate_donation_number(self):`
+Returns a 32 character length unique donation number.
+
+`def save(self, *args, **kwargs):`
+If a donation does nor have a donation number, assigns a new uuid to `self.donation_number`. Saves the model instance.
 
 #### The Profile Model
 The `Profile` model has a OneToOne relationship with Django's `User` model for simplicity and ease of maintenance. Each registered `Moment` user has a profile where they can access and view their information.
@@ -146,22 +242,24 @@ Fields: user, birth_date, location, charities, date_added
 ## Scope of Application
 ## Aesthetics
 ## Technologies
-1. HTML5/ Django Templates - Used for structuring and content.
-2. CSS3 - Used for adding styles to the content for legibility and aesthetic appeal.
-3. Vanilla Javascript - For adding basic interactivity and dynamically setting URLs.
-4. FontAwesome/Bootstrap icons - used for icons.
-5. Emojipedia - used for emojis.
-6. Firefox Developer Tools - used for debugging the website during production.
-7. Lighthouse - An extension I used for testing the performance, accessibility, best practices and SEO of my site (result shown under debugging below).
-8. GitHub - For code storage, version control and deployment.
-9. Git - For commiting through the terminal and pushing to GitHub for storage.
-10. VSC - The IDE I developed the project in.
-11. Balsamiq - For a clear understanding of the structure I wanted my application to follow. The project has since deviated slightly from the design for improved user experience.
-12. Color Contrast Accessibility Validator - check legibility of my text on different backgrounds for better accessibility.
-13. W3C Markup Validation Service - to validate my HTML for potential errors.
-14. W3C CSS Validation Service - to validate my CSS code for potential errors.
-15. JSHint - for checking and validating my JS code. 
-16. Pep8 - for Python code validation and best practices formatting.
+1. Django Framework - fullstack technology
+2. HTML5/ Django Syntax - Used for structuring and content.
+3. CSS3 - Used for adding styles to the content for legibility and aesthetic appeal.
+4. Javascript - For adding basic interactivity and dynamically setting URLs.
+5. Python - Used for Django manipulation & interaction.
+6. FontAwesome/Bootstrap icons - used for icons.
+7. Chrome Developer Tools - used for debugging the website during production.
+8. Lighthouse - For performance, accessibility, best practices and SEO checking.
+9. GitHub - For code storage, version control and deployment.
+10. Git - For commiting through the terminal and pushing to GitHub for storage.
+11. Gitpod - The IDE I developed the project in.
+12. VSC - For quick testing of allauth functionality due to Gitpod's limitations.
+12. Balsamiq - For project wireframe design.
+13. Color Contrast Accessibility Validator - for checking colour contrast ratios.
+14. W3C Markup Validation Service - to validate my HTML for potential errors.
+15. W3C CSS Validation Service - to validate my CSS code for potential errors.
+16. JSHint - for checking and validating my JS code. 
+17. Pep8 - for Python code validation and best practices formatting.
 
 ## Testing & Debugging
 This section outlines procedures for manual testing. For automated testing, please see all files `test*.py`.
@@ -171,6 +269,7 @@ This section outlines procedures for manual testing. For automated testing, plea
 |---|---|---|---|---|
 
 - ## Automated Testing
+
 ## Issues
 ![admin slug issue](static/images/issue-admin-slug.png)
 An issue involving the `Charity` model's `slug` field was noticed when updating the `name` field. The slug did not automatically update following a name change. 
@@ -188,12 +287,24 @@ Gitpod experiences an _'OSError: [Errno 101] Network is unreachable'_ when handl
 
 _Note: It is likely that a success page will be added as a redirection page instead of the home page._
 
+![does not exist error](static/images/doesnotexist.png)
+An issue regarding the charity account creation form arose when attempting to create a new instance of the model via form. The `save()` method in the model would attempt to retrieve an instance from the database to check the slug field, but as the instance was not yet saved to the database, the application would throw a `DoesNotExist` error type. The model instance would still save to the database and would be visible in the Django admin panel. 
+
+Removing this method got rid of the issue, but then the slug would not automatically update if the name of the charity was changed. The slug is needed for generating unique urls.
+
+###### Solution: 
+Perhaps the most straightforward way of bypassing this error was to wrap the method in a `try-except` block. The method would try to retrieve the model instance with a specific id (initially used for re-generating slugs). If the model instance could not be found and ran into the expected error, it saves the model instance instead of creating a new slug from the new title.
+
 ## Accessibility & Performance
 ### Lighthouse
 ### Colour Accessibility Validator
 ### HTML Validation
 ### CSS Validation
 ### JSHint Validation
+
+### Pep8 Validation
+All python files are regularly validated during development.
+
 ## Deployment
 The application is deployed on Heroku through Git Hub and is available for viewing in the link at the top of this README.md document. To deploy a Heroku project, please refer to the guide below.
 
@@ -267,4 +378,6 @@ Steps:
 6. Press Enter - you now have a cloned version of your GitHub repository.
 
 ## Credits
+[Stack Overflow](https://stackoverflow.com/questions/3090302/how-do-i-get-the-object-if-it-exists-or-none-if-it-does-not-exist-in-django) - this helped with manuevering around [does not exist error](#issues)
+
 ## Acknowledgements

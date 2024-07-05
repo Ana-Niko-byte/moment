@@ -12,9 +12,10 @@ SUBJECTS = (
     ('O', 'Other'),
 )
 
+
 class ContactForm(forms.Form):
     """
-    
+
     """
     name = forms.CharField(
         label='Your Name',
@@ -47,7 +48,12 @@ class ContactForm(forms.Form):
 class CharityForm(forms.ModelForm):
     class Meta:
         model = Charity
-        fields = ('name', 'description', 'entry_donation', 'category', 'image',)
+        fields = (
+            'name',
+            'description',
+            'entry_donation',
+            'category',
+            'image',)
         labels = {
             'description' : 'Description (400 characters)',
             'entry_donation' : 'Min. Donation (€)'

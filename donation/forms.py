@@ -6,4 +6,3 @@ class DonationForm(forms.ModelForm):
     class Meta:
         model = Donation
         fields = ('charity', 'donation_amount',)
-        

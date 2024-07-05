@@ -8,7 +8,7 @@ def make_donation(request):
         'donationForm': donationForm,
     }
     return render(
-        request, 
+        request,
         'donation/donation.html',
         context
     )

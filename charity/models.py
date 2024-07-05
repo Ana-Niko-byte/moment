@@ -99,8 +99,7 @@ class Charity(models.Model):
         # Adding new charity via form threw DoesotExist error.
         # Wrapping in try except + saving navigates this issue.
         except Charity.DoesNotExist:
-                super(Charity, self).save(*args, **kwargs)
-
+            super(Charity, self).save(*args, **kwargs)
 
 
 class Product(models.Model):
@@ -124,7 +123,7 @@ class Profile(models.Model):
     Attributes:
     user : OneToOneField - a direct relationship with Django's User model.
     birth_date : DateField - the user's birth date.
-    charities : ManyToManyField - a list of charities to which the user has donated.
+    charities : ManyToManyField - a list of charities the user has donated to.
     date_added : DateField - the date the user created their profile.
 
     Returns:

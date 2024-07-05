@@ -7,15 +7,16 @@ from charity.models import Charity
 
 import uuid
 
-# Create your models here.
+
 class Donation(models.Model):
     '''
     Represents a Donation (model) with basic information.
 
     Attributes:
-    donatee : FK : User - the user who made the donation.
+    donation_number : CharField - a unique donation number.
+    donation_user : FK : User - the user who made the donation.
     charity : FK : Charity - the charity to which the donation was made.
-    amount : DecimalField - the amount to be donated.
+    donation_amount : DecimalField - the amount to be donated.
     donation_date : DateField - the date on which the donation was made.
 
     Meta:
@@ -24,7 +25,11 @@ class Donation(models.Model):
     Returns:
     (str) : '(amount) donated to "(charity)" by (user)'.
     '''
-    donation_number = models.CharField(max_length=32, null=False, editable=False)
+    donation_number = models.CharField(
+        max_length=32,
+        null=False,
+        editable=False
+    )
     donation_user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -52,7 +57,9 @@ class Donation(models.Model):
         ordering = ['-donation_date']
 
     def __str__(self):
-        return f'New Donation: {self.donation_amount} to Charity: "{self.charity.name}"'
+        return f'''
+        New Donation: {self.donation_amount} to Charity: "{self.charity.name}"
+        '''
 
     def _generate_donation_number(self):
         return uuid.uuid4().hex.upper()
