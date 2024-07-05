@@ -2,7 +2,13 @@
 {% load static %}
 {% block content %}
 <div class="container">
-    <div class="row">
+    <!-- Colour Picker from WS3: https://www.w3schools.com/howto/howto_html_colorpicker.asp -->
+    <label for="colour">Select a Colour</label>
+    <input type="color" id="colour" value="#ff0000">
+    <!-- /Colour Picker from WS3: https://www.w3schools.com/howto/howto_html_colorpicker.asp -->
+
+    
+    <div class="row d-flex justify-content-center align-items-center">
         <canvas id="commonCanvas"></canvas>
     </div>
 </div>

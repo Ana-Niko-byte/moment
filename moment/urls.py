@@ -26,4 +26,5 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', include('charity.urls')),
     path('donate/', include('donation.urls')),
+    path('canvas/', include('canvas.urls')),
 ]
