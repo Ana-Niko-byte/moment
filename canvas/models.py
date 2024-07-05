@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models import Count
+from charity.models import Charity
+from django.contrib.auth.models import User
 
 
 class Canvas(models.Model):
@@ -20,8 +22,8 @@ class Canvas(models.Model):
     (str) : '(Canvas Name), contributors: (number of contributors)'.
     '''
     canvas_name = models.CharField(max_length=100)
-    charity = models.ForeignKey(Charity, on_deletemodels.CASCADE, related_name='charity_canvas')
-    contributors = models.ManyToManyField(User, blank=True, through='Contribution')
+    charity = models.ForeignKey(Charity, on_delete=models.CASCADE, related_name='charity_canvas')
+    contributors = models.ManyToManyField(User, blank=True)
     start_date = models.DateField()
     due_date = models.DateField()
 
