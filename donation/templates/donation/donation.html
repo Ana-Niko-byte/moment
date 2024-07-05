@@ -8,6 +8,7 @@
             <div class="heading-container text-center mb-4">
                 <h1>Make a Donation</h1>
                 <p>It really does help a lot.</p>
+                <p>This donation will be linked to {{ user }}'s account.</p>
             </div>
             <form method="POST" id="donationForm">
                 {% csrf_token %}
@@ -17,4 +18,8 @@
         </div>
     </div>
 </div>
+
+{% block postloadjs %}
+{% endblock %}
+
 {% endblock %}

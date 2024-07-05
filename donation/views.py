@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.conf import settings
 from .forms import *
 
-
-def make_donation(request):
+def donation_checkout(request):
     donationForm = DonationForm()
+
     context = {
         'donationForm': donationForm,
     }
+
     return render(
         request,
         'donation/donation.html',

@@ -3,27 +3,36 @@ from django_summernote.admin import SummernoteModelAdmin
 from .models import *
 
 
-class DonationAdmin(admin.ModelAdmin):
+@admin.register(Donation)
+class DonationAdmin(SummernoteModelAdmin):
     '''
     A class registering the Donation model using Django Summernote.
 
     Methods:
-    Displays fields 'charity', 'donation_amount', 'donation_user',
-    'donation_date'.
-    in a list in admin.
-    Allows search-by 'charity' and 'donation_user'.
-    Allows quick filtering by 'charity', 'donation_user' and 'donation_date'.
+    Read-Only fields: all Donation model fields.
+    Displays fields 'full_name', 'donation_amount', 'country',
+    'postcode', 'donation_date' in a list in admin.
+    Allows search-by 'full_name', 'charity' and 'donation_user', 'country, and 'postcode'.
+    Allows quick filtering by 'charity', 'donation_user', 'donation_date', and 'country'.
+    Orders by earliest date.
     '''
-    readonly_fields = ('donation_number', 'donation_date')
-    list_display = (
+    readonly_fields = [
+        'donation_number',
+        'full_name',
         'charity',
         'donation_amount',
-        'donation_user',
+        'country',
+        'postcode',
+        'donation_date',
+    ]
+    
+    list_display = (
+        'full_name',
+        'donation_amount',
+        'country',
+        'postcode',
         'donation_date'
     )
-    search_fields = ['charity', 'donation_user']
-    list_filter = ('charity', 'donation_user', 'donation_date')
+    search_fields = ['full_name', 'charity', 'donation_user', 'country', 'postcode']
+    list_filter = ('charity', 'donation_user', 'donation_date', 'country')
     ordering = ('-donation_date',)
-
-
-admin.site.register(Donation)

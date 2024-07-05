@@ -6,6 +6,7 @@ from django.conf import settings
 from charity.models import Charity
 
 import uuid
+from .countries import COUNTRIES
 
 
 class Donation(models.Model):
@@ -30,6 +31,7 @@ class Donation(models.Model):
         null=False,
         editable=False
     )
+    full_name = models.CharField(max_length=50, null=False, blank=False)
     donation_user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -51,6 +53,8 @@ class Donation(models.Model):
         max_digits=5,
         help_text='The donation made by the user.'
     )
+    country = models.CharField(max_length=40, choices=COUNTRIES, null=False, blank=False)
+    postcode = models.CharField(max_length=20, null=True, blank=True)
     donation_date = models.DateField(auto_now_add=True)
 
     class Meta:
@@ -58,7 +62,7 @@ class Donation(models.Model):
 
     def __str__(self):
         return f'''
-        New Donation: {self.donation_amount} to Charity: "{self.charity.name}"
+        {self.full_name} : €{self.donation_amount} : "{self.charity.name}"
         '''
 
     def _generate_donation_number(self):

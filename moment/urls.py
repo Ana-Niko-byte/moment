@@ -26,4 +26,4 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', include('charity.urls')),
     path('donate/', include('donation.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
